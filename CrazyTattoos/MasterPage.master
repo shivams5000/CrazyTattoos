@@ -1,0 +1,210 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" ClientIDMode="Static" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Work+Sans:300,400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="fonts/icomoon/style.css"/>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/magnific-popup.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>    
+    
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css"/>
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/aos.css"/>
+
+    <link rel="stylesheet" href="css/style.css"/>
+   <script>
+       function picGrey() {
+           document.getElementById("tiktok").src = "images/tiktok.png";
+       }
+        function picWhite() {
+           document.getElementById("tiktok").src = "images/tiktokwhite.png";
+       }
+   </script>
+    <style>
+        /**************Custom css**********************/
+.btn-primary,.btn-primary:focus,.bg-primary {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    -webkit-box-shadow:none !important; 
+    box-shadow:none !important; 
+}
+        a {
+            color:#dc3545;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">var scrolltotop={setting:{startline:100,scrollto:0,scrollduration:1e3,fadeduration:[500,100]},controlHTML:'<img src="https://i1155.photobucket.com/albums/p559/scrolltotop/arrow64.png" />',controlattrs:{offsetx:5,offsety:5},anchorkeyword:"#top",state:{isvisible:!1,shouldvisible:!1},scrollup:function(){this.cssfixedsupport||this.$control.css({opacity:0});var t=isNaN(this.setting.scrollto)?this.setting.scrollto:parseInt(this.setting.scrollto);t="string"==typeof t&&1==jQuery("#"+t).length?jQuery("#"+t).offset().top:0,this.$body.animate({scrollTop:t},this.setting.scrollduration)},keepfixed:function(){var t=jQuery(window),o=t.scrollLeft()+t.width()-this.$control.width()-this.controlattrs.offsetx,s=t.scrollTop()+t.height()-this.$control.height()-this.controlattrs.offsety;this.$control.css({left:o+"px",top:s+"px"})},togglecontrol:function(){var t=jQuery(window).scrollTop();this.cssfixedsupport||this.keepfixed(),this.state.shouldvisible=t>=this.setting.startline?!0:!1,this.state.shouldvisible&&!this.state.isvisible?(this.$control.stop().animate({opacity:1},this.setting.fadeduration[0]),this.state.isvisible=!0):0==this.state.shouldvisible&&this.state.isvisible&&(this.$control.stop().animate({opacity:0},this.setting.fadeduration[1]),this.state.isvisible=!1)},init:function(){jQuery(document).ready(function(t){var o=scrolltotop,s=document.all;o.cssfixedsupport=!s||s&&"CSS1Compat"==document.compatMode&&window.XMLHttpRequest,o.$body=t(window.opera?"CSS1Compat"==document.compatMode?"html":"body":"html,body"),o.$control=t('<div id="topcontrol">'+o.controlHTML+"</div>").css({position:o.cssfixedsupport?"fixed":"absolute",bottom:o.controlattrs.offsety,right:o.controlattrs.offsetx,opacity:0,cursor:"pointer"}).attr({title:"Scroll to Top"}).click(function(){return o.scrollup(),!1}).appendTo("body"),document.all&&!window.XMLHttpRequest&&""!=o.$control.text()&&o.$control.css({width:o.$control.width()}),o.togglecontrol(),t('a[href="'+o.anchorkeyword+'"]').click(function(){return o.scrollup(),!1}),t(window).bind("scroll resize",function(t){o.togglecontrol()})})}};scrolltotop.init();</script>--%>
+
+        <%-- <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>--%>
+
+        <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    
+    <div class="site-navbar-wrap js-site-navbar bg-white">
+      
+      <div class="container">
+        <div class="site-navbar bg-light">
+          <div class="row align-items-center">
+            <div class="col-2">
+              <h2 class="mb-0 site-logo"><a href="index.html" class="font-weight-bold text-uppercase">crazy tattoo</a></h2>
+            </div>
+            <div class="col-10">
+              <nav class="site-navigation text-right" role="navigation">
+                <div class="container">
+                  <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                  <ul class="site-menu js-clone-nav d-none d-lg-block">
+                    <li runat="server" id="p1"><a href="Default.aspx">Home</a></li>
+                   <%-- <li class="has-children">--%>
+                       <li runat="server" id="p2">
+                      <a href="About.aspx">About</a>
+                     <%-- <ul class="dropdown arrow-top">
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="why-choose-us.html">Why Choose Us</a></li>
+                        <li class="has-children">
+                          <a href="#">Sub Menus</a>
+                          <ul class="dropdown">
+                            <li><a href="testimonials.html">Testimonials</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="why-choose-us.html">Why Choose Us</a></li>
+                          </ul>
+                        </li>
+                      </ul>--%>
+                    </li>
+                    <li runat="server" id="p3"><a href="Services.aspx">Services</a></li>
+                    <li runat="server" id="p4"><a href="Portfolio.aspx">Portfolio</a></li>
+                    <li runat="server" id="p5"><a href="Contact.aspx">Contact</a></li>
+                    <li runat="server" id="p6"><a href="Testimonials.aspx"><span class="d-inline-block bg-primary text-white btn btn-primary">Testimonials</span></a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+   
+
+      <asp:ContentPlaceHolder id="myContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+
+    <footer class="site-footer bg-dark">
+      <div class="container">
+        
+
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h3 class="footer-heading mb-4 text-white">About</h3>
+            <p>Today, tattoos are at an apex of popularity, with many celebrities, artists and musicians sporting impressive designs.</p>
+            <p><a href="About.aspx" class="btn btn-primary text-white px-4">Read More</a></p>
+          </div>
+          <div class="col-md-5 mb-4 mb-md-0 ml-auto">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
+                  <ul class="list-unstyled">
+                    <li><a href="Default.aspx">Home</a></li>
+                    <li><a href="About.aspx">About</a></li>
+                    <li><a href="Services.aspx">Services</a></li>
+                    <li><a href="Portfolio.aspx">Portflio</a></li>
+                    <li><a href="Contact.aspx">Contact</a></li>
+                      <li><a href="Testimonials.aspx">Testimonials</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-6">
+                <h3 class="footer-heading mb-4 text-white">Services</h3>
+                  <ul class="list-unstyled">
+                    <li><a href="#">Permanent Tattoo</a></li>
+                    <li><a href="#">Temporary Tattoo</a></li>
+                    <li><a href="#">Portrait Tattoo</a></li>
+                    <li><a href="#">3D Art Tattoo</a></li>
+                      <li><a href="#">Body Piercing</a></li>
+                  </ul>
+              </div>
+            </div>
+
+          
+          </div>
+
+          
+          <div class="col-md-2">
+            
+            <div class="row">
+            <div class="col-md-12"><h3 class="footer-heading mb-4 text-white">Social Icons</h3></div>
+              <div class="col-md-12">
+                <p>
+                  <a title="Facebook" href="https://www.facebook.com/" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
+                  <a href="#" title="Snapchat" class="p-2"><span class="icon-snapchat-ghost"></span></a>
+                  <a title="Instagram" href="https://www.instagram.com/" class="p-2"><span class="icon-instagram"></span></a>
+                  <a href="#" title="TickTok" class="p-2"><img style="margin-bottom: 5px;" onmouseover="picWhite()" onmouseout="picGrey()" id="tiktok" src="images/tiktok.png" width="13" /></a>
+
+                </p>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+         
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+
+      
+    </div>
+    </form>
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

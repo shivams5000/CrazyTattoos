@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="crazyTattoosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoryInfo">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ImageInfo">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="100" />
+          <Property Name="ImageExtension" Type="varchar" MaxLength="100" />
+          <Property Name="ImageSize" Type="int" />
+          <Property Name="ImageType" Type="varchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="ImageSlider">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhotoName" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ExtName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PhotoType" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PhotoSize" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loginInfo">
+          <Key>
+            <PropertyRef Name="LoginInfoId" />
+          </Key>
+          <Property Name="LoginInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Question" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Testimonials">
+          <Key>
+            <PropertyRef Name="TestimonialId" />
+          </Key>
+          <Property Name="TestimonialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Testimonial" Type="nvarchar(max)" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__ImageInfo__Categ__44FF419A">
+          <End Role="categoryInfo" Type="Self.categoryInfo" Multiplicity="0..1" />
+          <End Role="ImageInfo" Type="Self.ImageInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoryInfo">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="ImageInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="crazyTattoosModelStoreContainer">
+          <EntitySet Name="categoryInfo" EntityType="Self.categoryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageInfo" EntityType="Self.ImageInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageSlider" EntityType="Self.ImageSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loginInfo" EntityType="Self.loginInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ImageInfo__Categ__44FF419A" Association="Self.FK__ImageInfo__Categ__44FF419A">
+            <End Role="categoryInfo" EntitySet="categoryInfo" />
+            <End Role="ImageInfo" EntitySet="ImageInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="crazyTattoosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categoryInfo">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ImageInfoes" Relationship="Self.FK__ImageInfo__Categ__44FF419A" FromRole="categoryInfo" ToRole="ImageInfo" />
+        </EntityType>
+        <EntityType Name="ImageInfo">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImageExtension" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImageSize" Type="Int32" />
+          <Property Name="ImageType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="categoryInfo" Relationship="Self.FK__ImageInfo__Categ__44FF419A" FromRole="ImageInfo" ToRole="categoryInfo" />
+        </EntityType>
+        <EntityType Name="ImageSlider">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhotoName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExtName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoType" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhotoSize" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loginInfo">
+          <Key>
+            <PropertyRef Name="LoginInfoId" />
+          </Key>
+          <Property Name="LoginInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="TestimonialId" />
+          </Key>
+          <Property Name="TestimonialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Testimonial1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__ImageInfo__Categ__44FF419A">
+          <End Role="categoryInfo" Type="Self.categoryInfo" Multiplicity="0..1" />
+          <End Role="ImageInfo" Type="Self.ImageInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoryInfo">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="ImageInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="crazyTattoosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categoryInfoes" EntityType="Self.categoryInfo" />
+          <EntitySet Name="ImageInfoes" EntityType="Self.ImageInfo" />
+          <EntitySet Name="ImageSliders" EntityType="Self.ImageSlider" />
+          <EntitySet Name="loginInfoes" EntityType="Self.loginInfo" />
+          <EntitySet Name="Testimonials" EntityType="Self.Testimonial" />
+          <AssociationSet Name="FK__ImageInfo__Categ__44FF419A" Association="Self.FK__ImageInfo__Categ__44FF419A">
+            <End Role="categoryInfo" EntitySet="categoryInfoes" />
+            <End Role="ImageInfo" EntitySet="ImageInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="crazyTattoosModelStoreContainer" CdmEntityContainer="crazyTattoosEntities">
+          <EntitySetMapping Name="categoryInfoes">
+            <EntityTypeMapping TypeName="crazyTattoosModel.categoryInfo">
+              <MappingFragment StoreEntitySet="categoryInfo">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageInfoes">
+            <EntityTypeMapping TypeName="crazyTattoosModel.ImageInfo">
+              <MappingFragment StoreEntitySet="ImageInfo">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageExtension" ColumnName="ImageExtension" />
+                <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageSliders">
+            <EntityTypeMapping TypeName="crazyTattoosModel.ImageSlider">
+              <MappingFragment StoreEntitySet="ImageSlider">
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="PhotoSize" ColumnName="PhotoSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginInfoes">
+            <EntityTypeMapping TypeName="crazyTattoosModel.loginInfo">
+              <MappingFragment StoreEntitySet="loginInfo">
+                <ScalarProperty Name="LoginInfoId" ColumnName="LoginInfoId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonials">
+            <EntityTypeMapping TypeName="crazyTattoosModel.Testimonial">
+              <MappingFragment StoreEntitySet="Testimonials">
+                <ScalarProperty Name="TestimonialId" ColumnName="TestimonialId" />
+                <ScalarProperty Name="Testimonial1" ColumnName="Testimonial" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
